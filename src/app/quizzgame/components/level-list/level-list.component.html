@@ -1,0 +1,43 @@
+<mat-table [dataSource]="levels">
+  <ng-container matColumnDef="idLevel">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+
+    <mat-cell *matCellDef="let level">{{ level.idLevel }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="desc">
+    <mat-header-cell *matHeaderCellDef>Descrição</mat-header-cell>
+
+    <mat-cell *matCellDef="let level">{{ level.desc }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="column-action"></mat-header-cell>
+
+    <mat-row>
+      <mat-cell *matCellDef="let level" class="column-action">
+        <button
+          class="btn-action-edit"
+          mat-mini-fab
+          aria-label="Editar Nível"
+          (click)="onEdit(level)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          class="btn-action-delete"
+          color="warn"
+          mat-mini-fab
+          aria-label="Remover Nível"
+          (click)="onDelete(level)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </mat-row>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

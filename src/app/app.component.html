@@ -1,0 +1,17 @@
+<div *ngIf="logged == false" class="container-login">
+  <div class="login">
+    <div class="logo">
+      <img src="assets/logo.png" height="110px" />
+    </div>
+    <div class="input">
+      <input type="text" name="Usuário" [(ngModel)]="user" placeholder="Usuário" />
+    </div>
+    <div class="input">
+      <input type="password" name="Senha" [(ngModel)]="password" placeholder="Senha"  />
+    </div>
+    <div class="input">
+      <button (click)="login()">LOGIN</button>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,43 @@
+.container-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login{
+  padding: 10px 10px 10px 10px;
+  border-radius: 15px;
+  border: 1px solid #a6a5a5;
+  width: 30vh;
+  margin-top: 10%;
+}
+
+.input{
+  align-content: center;
+  justify-content: center;
+  display: flex;
+}
+
+button{
+  width: 70%;
+  height: 40px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 0px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+input{
+  width: 70%;
+  height: 30px;
+  margin-top: 20px;
+  padding-left: 10px;
+}
+
+.logo{
+  justify-content: center;
+  display: flex;
+}

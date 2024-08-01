@@ -1,0 +1,43 @@
+<mat-table [dataSource]="questions">
+  <ng-container matColumnDef="idQuestion">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+
+    <mat-cell *matCellDef="let question">{{ question.idQuestion }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+
+    <mat-cell *matCellDef="let question">{{ question.title }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="column-action"></mat-header-cell>
+
+    <mat-row>
+      <mat-cell *matCellDef="let question" class="column-action">
+        <button
+          class="btn-action-edit"
+          mat-mini-fab
+          aria-label="Editar Pergunta"
+          (click)="onEdit(question)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          class="btn-action-delete"
+          color="warn"
+          mat-mini-fab
+          aria-label="Remover Pergunta"
+          (click)="onDelete(question)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </mat-row>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

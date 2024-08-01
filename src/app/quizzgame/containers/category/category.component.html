@@ -1,0 +1,71 @@
+<div *ngIf="logged == true" class="container">
+  <app-nav-bar></app-nav-bar>
+  <button class="button-back"
+    *ngIf="showTable$ == false"
+    mat-fab
+    color="primary"
+    aria-label="Voltar"
+    (click)="onChangeShow(false, '', '')"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-card *ngIf="showTable$ == true" appearance="outlined">
+    <mat-card-content>
+      <mat-toolbar class="title-table" color="accent">
+        <span>Lista de categorias</span>
+        <button
+          *ngIf="showTable$ == true"
+          mat-fab
+          color="primary"
+          aria-label="Adicionar Categoria"
+          (click)="onChangeShow(false, '', '')"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <div *ngIf="showTable$ == true" class="mat-elevation-z8">
+        <app-category-list
+          *ngIf="categories$ | async as categories; else loading"
+          [categories]="categories"
+          (delete)="onDelete($event)"
+          (edit)="onChangeShow(true, $event.idCategory, $event.desc)"
+        >
+        </app-category-list>
+      </div>
+
+      <ng-template #loading>
+        <div class="loading-spinner">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+  <div *ngIf="showTable$ == false" class="outlined">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-toolbar color="accent">
+          <span class="title-table">{{ title }}</span>
+        </mat-toolbar>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="form">
+          <input formControlName="idCategory" [(ngModel)]="idCategory" type="hidden" />
+          <mat-form-field appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="desc" [(ngModel)]="desc" placeholder="Descrição" />
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          SALVAR
+        </button>
+        <button mat-raised-button color="warn" (click)="onChangeShow(false, '', '')">
+          CANCELAR
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <!-- <router-outlet></router-outlet> -->
+</div>

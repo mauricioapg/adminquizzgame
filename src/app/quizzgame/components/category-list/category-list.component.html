@@ -1,0 +1,43 @@
+<mat-table [dataSource]="categories">
+  <ng-container matColumnDef="idCategory">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+
+    <mat-cell *matCellDef="let category">{{ category.idCategory }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="desc">
+    <mat-header-cell *matHeaderCellDef>Descrição</mat-header-cell>
+
+    <mat-cell *matCellDef="let category">{{ category.desc }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="column-action"></mat-header-cell>
+
+    <mat-row>
+      <mat-cell *matCellDef="let category" class="column-action">
+        <button
+          class="btn-action-edit"
+          mat-mini-fab
+          aria-label="Editar Categoria"
+          (click)="onEdit(category)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          class="btn-action-delete"
+          color="warn"
+          mat-mini-fab
+          aria-label="Remover Categoria"
+          (click)="onDelete(category)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </mat-row>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

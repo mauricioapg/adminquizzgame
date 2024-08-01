@@ -1,0 +1,106 @@
+mat-card{
+  max-width: 80%;
+  margin: 4em auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.button-back{
+  max-width: 80%;
+  // margin: 4em auto;
+  margin-left: 11%;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  // min-width: 300px;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  // width: 40px;
+  // max-width: 40px;
+}
+
+.btn-action-edit {
+  margin-right: 10px;
+}
+
+.btn-action-delete {
+  margin-right: 10px;
+}
+
+.title-table {
+  justify-content: space-between;
+
+  button{
+    height: 40px;
+    width: 40px;
+  }
+
+  span{
+    font-size: 18px;
+  }
+}
+
+mat-card-header{
+  margin-bottom: 20px;
+}
+
+mat-card-actions{
+  justify-content: center;
+
+  button{
+    margin: 5px;
+  }
+}
+
+.title-table {
+  font-size: 18px;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+ul {
+  li {
+    list-style: none;
+    display: inline;
+    margin-right: 20px;
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  li:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 580px) {
+  ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 50px;
+    left: 0;
+  }
+}

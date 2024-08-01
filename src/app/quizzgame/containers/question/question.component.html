@@ -1,0 +1,101 @@
+<div *ngIf="logged == true" class="container">
+  <app-nav-bar></app-nav-bar>
+  <button class="button-back"
+    *ngIf="showTable$ == false"
+    mat-fab
+    color="primary"
+    aria-label="Voltar"
+    (click)="onChangeShow(false, '', '', '', '', [], '')"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-card *ngIf="showTable$ == true" appearance="outlined">
+    <mat-card-content>
+      <mat-toolbar class="title-table" color="accent">
+        <span>Lista de perguntas</span>
+        <button
+          *ngIf="showTable$ == true"
+          mat-fab
+          color="primary"
+          aria-label="Adicionar Pergunta"
+          (click)="onChangeShow(false, '', '', '', '', [], '')"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <div *ngIf="showTable$ == true" class="mat-elevation-z8">
+        <app-question-list
+          *ngIf="questions$ | async as questions; else loading"
+          [questions]="questions"
+          (delete)="onDelete($event)"
+          (edit)="onChangeShow(true, $event.idQuestion, $event.title, $event.category, $event.level, [], $event.answer)"
+        >
+        </app-question-list>
+      </div>
+
+      <ng-template #loading>
+        <div class="loading-spinner">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+  <div *ngIf="showTable$ == false" class="outlined">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-toolbar color="accent">
+          <span class="title-table">{{ titlePage }}</span>
+        </mat-toolbar>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="form">
+          <input formControlName="idQuestion" [(ngModel)]="idQuestion" type="hidden" />
+          <mat-form-field appearance="outline">
+            <mat-label>Título</mat-label>
+            <input matInput formControlName="title" [(ngModel)]="title" placeholder="Título" />
+          </mat-form-field>
+          <mat-form-field class="mat-form" appearance="outline">
+              <mat-label>Escolha uma categoria</mat-label>
+              <mat-select *ngIf="categories$ | async as categories;" formControlName="category" [(ngModel)]="category">
+              <mat-option value=null></mat-option>
+                @for(category of categories; track category){
+                  <mat-option value={{category.desc}}>{{ category.desc }}</mat-option>
+                }
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field class="mat-form" appearance="outline">
+              <mat-label>Escolha um nível</mat-label>
+              <mat-select *ngIf="levels$ | async as levels;" formControlName="level" [(ngModel)]="level">
+                <mat-option value=null></mat-option>
+                @for(level of levels; track level){
+                  <mat-option value={{level.desc}}>{{ level.desc }}</mat-option>
+                }
+              </mat-select>
+          </mat-form-field>
+          <app-item-picker *ngIf="titlePage == 'Criar pergunta'"
+            (alternativeList)="getAlternativeList($event)">
+          </app-item-picker>
+          <app-item-picker *ngIf="titlePage == 'Editar pergunta'"
+            (alternativeList)="getAlternativeList($event)"
+            [list]="listAlternativesReceive"
+            [edit]="true">
+          </app-item-picker>
+          <mat-form-field appearance="outline">
+            <mat-label>Resposta</mat-label>
+            <input matInput formControlName="answer" [(ngModel)]="answer" placeholder="Resposta" />
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          SALVAR
+        </button>
+        <button mat-raised-button color="warn" (click)="onChangeShow(false, '', '', '', '', [], '')">
+          CANCELAR
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <!-- <router-outlet></router-outlet> -->
+</div>

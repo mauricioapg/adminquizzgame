@@ -1,0 +1,22 @@
+mat-form-field{
+  width: 100%;
+}
+
+button{
+  margin-bottom: 20px;
+}
+
+mat-list{
+  width: 100%;
+  align-content: space-between;
+  justify-content: space-between;
+}
+
+.item-lista{
+  mat-icon{
+    margin-right: 60px;
+    display: flex;
+    float: inline-end;
+    cursor: pointer;
+  }
+}

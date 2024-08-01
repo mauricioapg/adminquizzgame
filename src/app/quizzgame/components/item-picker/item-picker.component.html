@@ -1,0 +1,42 @@
+<mat-grid-list cols="18" rowHeight="80px">
+    <mat-grid-tile colspan="17">
+        <mat-form-field appearance="outline">
+          <mat-label>Alternativa</mat-label>
+          <input matInput [(ngModel)]="name" placeholder="Alternativa" type="text">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+      <button
+        mat-fab color="primary"
+        aria-label="Adicionar"
+        (click)="add()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-grid-tile>
+</mat-grid-list>
+<mat-list *ngIf="edit == false" role="list">
+  @for(alternative of alternatives; track alternative){
+    <mat-list-item role="listitem">
+      <div class="item-lista">
+        <mat-label>{{ alternative }}</mat-label>
+        <mat-icon (click)="close(alternative)" fontIcon="close" />
+      </div>
+    </mat-list-item>
+  }
+</mat-list>
+<mat-list *ngIf="edit == true" role="list">
+  @for(alternative of list; track alternative){
+    <mat-list-item role="listitem">
+      <div class="item-lista">
+        <mat-label>{{ alternative }}</mat-label>
+        <mat-icon (click)="close(alternative)" fontIcon="close" />
+      </div>
+    </mat-list-item>
+  }
+</mat-list>
+<!-- <mat-list role="list">
+  @for(alternative of alternatives; track alternative){
+    <mat-list-item role="listitem">{{ alternative }}</mat-list-item>
+  }
+</mat-list> -->
+

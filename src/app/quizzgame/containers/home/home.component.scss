@@ -1,0 +1,35 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+ul {
+  li {
+    list-style: none;
+    display: inline;
+    margin-right: 20px;
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  li:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 580px) {
+  ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 50px;
+    left: 0;
+  }
+}
