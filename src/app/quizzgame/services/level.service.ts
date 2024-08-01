@@ -8,7 +8,7 @@ import { delay, first, Observable } from 'rxjs';
 })
 export class LevelService {
 
-  private urlAPI = 'http://localhost:8080/levels'
+  private urlAPI = 'https://quizzgameapi-ji6nrrlm7q-uc.a.run.app/levels'
 
   public headers = new Headers()
 

@@ -8,7 +8,7 @@ import { delay, first } from 'rxjs';
 })
 export class CategoryService {
 
-  private urlAPI = 'http://localhost:8080/categories'
+  private urlAPI = 'https://quizzgameapi-ji6nrrlm7q-uc.a.run.app/categories'
 
   public headers = new Headers();
 

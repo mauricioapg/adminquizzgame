@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
 
-  private urlAPI = 'http://localhost:8080/login'
+  private urlAPI = 'https://quizzgameapi-ji6nrrlm7q-uc.a.run.app/login'
 
   constructor(private httpClient: HttpClient) { }
 

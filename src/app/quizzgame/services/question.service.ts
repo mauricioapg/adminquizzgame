@@ -8,7 +8,7 @@ import { delay, first } from 'rxjs';
 })
 export class QuestionService {
 
-  private urlAPI = 'http://localhost:8080/questions'
+  private urlAPI = 'https://quizzgameapi-ji6nrrlm7q-uc.a.run.app/questions'
 
   public headers = new Headers()
 
