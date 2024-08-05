@@ -3,9 +3,9 @@
   <nav>
     <div class="brand"></div>
     <div class="menu-toggle" id="menu-toggle">
-    <button (click)="toggleDrawer()">
-      <mat-icon>menu</mat-icon>
-    </button>
+      <button (click)="toggleDrawer()">
+        <mat-icon>menu</mat-icon>
+      </button>
     </div>
     <ul class="page-options">
       <li (click)="onHome()">Início</li>
@@ -14,6 +14,7 @@
       <li (click)="onLevel()">Níveis</li>
     </ul>
     <ul class="drawer-options" *ngIf="showList$ == true">
+      <li class="userLoggedMobile">Usuário logado:  <label>{{ username }}</label> </li>
       <li (click)="onHome()">Início</li>
       <li (click)="onQuestion()">Perguntas</li>
       <li (click)="onCategory()">Categorias</li>
@@ -22,5 +23,6 @@
     </ul>
   </nav>
   <div class="space"></div>
+  <div class="userLogged">Usuário logado: <label>{{ username }}</label></div>
   <button class="logout" (click)="logout()">SAIR</button>
 </mat-toolbar>

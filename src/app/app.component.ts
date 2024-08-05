@@ -25,12 +25,7 @@ export class AppComponent {
     private snackBar: MatSnackBar
   ) {
     afterNextRender(() => {
-      if(localStorage.getItem('token') == null){
-        this.logged = false
-      }
-      else{
-        this.logged = true
-      }
+      this.logged = localStorage.getItem('logged') === 'true';
     });
 
   }
@@ -44,10 +39,13 @@ export class AppComponent {
 
   goToHome(token: any){
     localStorage.setItem('token', JSON.stringify(token).substring(10, JSON.stringify(token).length -2))
-    this.logged = true
+    localStorage.setItem('logged', 'true')
+    localStorage.setItem('username', this.user)
+    this.logged = localStorage.getItem('logged') === 'true';
     this.router.navigate(['home'], {relativeTo: this.route});
     this.user = ''
     this.password = ''
+    this.logged = localStorage.getItem('logged') === 'true';
   }
 
   onError(msg: string) {

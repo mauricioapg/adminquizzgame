@@ -59,6 +59,15 @@ button{
   display: none;
 }
 
+.userLogged{
+  font-size: 16px;
+  margin-right: 16px;
+}
+
+.userLoggedMobile{
+  display: none;
+}
+
 @media (max-width: 580px) {
   nav .menu-toggle {
     display: block;
@@ -103,6 +112,15 @@ button{
 
   .logout{
     display: none;
+  }
+
+  .userLogged{
+    display: none;
+  }
+
+  .userLoggedMobile{
+    font-size: 16px;
+    margin-right: 16px;
   }
 }
 

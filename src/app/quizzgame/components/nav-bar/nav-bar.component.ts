@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { afterNextRender, Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,11 +8,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class NavBarComponent {
   showList$ = false;
+  username: string = '';
 
   constructor(
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    afterNextRender(() => {
+      this.username = localStorage.getItem('username') || ''
+    });
+  }
 
   onHome() {
     this.router.navigate(['home']);
@@ -33,6 +38,7 @@ export class NavBarComponent {
   logout(){
     localStorage.clear();
     this.router.navigate(['']);
+    window.location.reload();
   }
 
   toggleDrawer() {
