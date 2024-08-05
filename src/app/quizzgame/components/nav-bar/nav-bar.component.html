@@ -1,12 +1,26 @@
 <mat-toolbar color="primary">
   <img src="assets/logo.png" height="80px" />
   <nav>
-    <ul>
+    <div class="brand"></div>
+    <div class="menu-toggle" id="menu-toggle">
+    <button (click)="toggleDrawer()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    </div>
+    <ul class="page-options">
       <li (click)="onHome()">Início</li>
       <li (click)="onQuestion()">Perguntas</li>
       <li (click)="onCategory()">Categorias</li>
       <li (click)="onLevel()">Níveis</li>
     </ul>
-    <button (click)="logout()">LOGOUT</button>
+    <ul class="drawer-options" *ngIf="showList$ == true">
+      <li (click)="onHome()">Início</li>
+      <li (click)="onQuestion()">Perguntas</li>
+      <li (click)="onCategory()">Categorias</li>
+      <li (click)="onLevel()">Níveis</li>
+      <li (click)="logout()">Sair</li>
+    </ul>
   </nav>
+  <div class="space"></div>
+  <button class="logout" (click)="logout()">SAIR</button>
 </mat-toolbar>

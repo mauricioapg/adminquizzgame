@@ -1,28 +1,86 @@
+mat-toolbar{
+  justify-content: space-between;
+}
+
 nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 10px;
 }
 
-ul {
-  li {
-    list-style: none;
-    display: inline;
-    margin-right: 20px;
-    color: white;
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
+nav .brand {
+  color: black;
+}
 
-  li:hover {
-    background-color: white;
-    color: black;
-    cursor: pointer;
-  }
+.space {
+  color: black;
+  width: 900px;
+}
+
+nav .menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.page-options {
+  display: flex;
+}
+
+.drawer-options {
+  display: none;
+}
+
+ul li {
+  list-style: none;
+  display: inline;
+  margin-right: 20px;
+  color: white;
+  padding: 10px;
+}
+
+ul li:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+button{
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.logout{
+  display: block;
+}
+
+.list{
+  display: none;
 }
 
 @media (max-width: 580px) {
+  nav .menu-toggle {
+    display: block;
+  }
+
+  nav .brand {
+    color: white;
+    width: 240px;
+    display: block;
+  }
+
+  .page-options {
+    display: none;
+  }
+
+  .drawer-options {
+    display: flex;
+    position: absolute;
+    box-shadow: none;
+    z-index: 1000; /* Certifique-se de que este valor é maior que o z-index da tabela */
+  }
+
   ul {
     display: none;
     flex-direction: column;
@@ -32,4 +90,20 @@ ul {
     top: 50px;
     left: 0;
   }
+
+  ul li {
+    display: block;
+    text-align: center;
+    margin: 0;
+  }
+
+  ul.show {
+    display: flex;
+  }
+
+  .logout{
+    display: none;
+  }
 }
+
+

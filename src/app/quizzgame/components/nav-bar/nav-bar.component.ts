@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
+  showList$ = false;
 
   constructor(
     private router: Router,
@@ -32,6 +33,14 @@ export class NavBarComponent {
   logout(){
     localStorage.clear();
     this.router.navigate(['']);
+  }
+
+  toggleDrawer() {
+    this.showList$ = !this.showList$;
+    const pageOptions = document.getElementById('page-options');
+    if (pageOptions) {
+      pageOptions.style.display = this.showList$ ? 'block' : 'none';
+    }
   }
 
 }
