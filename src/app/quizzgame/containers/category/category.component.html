@@ -5,7 +5,7 @@
     mat-fab
     color="primary"
     aria-label="Voltar"
-    (click)="onChangeShow(false, '', '')"
+    (click)="onChangeShow(false, '', '', '')"
   >
     <mat-icon>arrow_back</mat-icon>
   </button>
@@ -18,7 +18,7 @@
           mat-fab
           color="primary"
           aria-label="Adicionar Categoria"
-          (click)="onChangeShow(false, '', '')"
+          (click)="onChangeShow(false, '', '', '')"
         >
           <mat-icon>add</mat-icon>
         </button>
@@ -29,7 +29,7 @@
           *ngIf="categories$ | async as categories; else loading"
           [categories]="categories"
           (delete)="onDelete($event)"
-          (edit)="onChangeShow(true, $event.idCategory, $event.desc)"
+          (edit)="onChangeShow(true, $event.idCategory, $event.desc, $event.image)"
         >
         </app-category-list>
       </div>
@@ -57,11 +57,36 @@
           </mat-form-field>
         </form>
       </mat-card-content>
+      <div *ngIf="base64Image != null">
+        <img [src]="base64Image"
+          class="image-preview"
+          width="100px"
+          height="100px" />
+      </div>
+      <div class="file-upload-container">
+        <!-- Botão personalizado -->
+        <button *ngIf="base64Image != null" type="button" class="file-upload-button" (click)="triggerFileInput()">
+          Trocar Imagem
+        </button>
+        <button *ngIf="base64Image == null" type="button" class="file-upload-button" (click)="triggerFileInput()">
+          Carregar Imagem
+        </button>
+
+        <!-- Input file escondido -->
+        <input
+          id="fileInput"
+          type="file"
+          class="file-upload"
+          formControlName="image"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+        />
+      </div>
       <mat-card-actions>
         <button mat-raised-button color="primary" (click)="onSubmit()">
           SALVAR
         </button>
-        <button mat-raised-button color="warn" (click)="onChangeShow(false, '', '')">
+        <button mat-raised-button color="warn" (click)="onChangeShow(false, '', '', '')">
           CANCELAR
         </button>
       </mat-card-actions>

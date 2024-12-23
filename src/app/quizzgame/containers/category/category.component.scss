@@ -105,3 +105,35 @@ ul {
     left: 0;
   }
 }
+
+//PREVIEW IMAGEM
+.image-preview{
+  margin-left: 16px;
+  background-color: #adadaf;
+}
+
+//BOTÃO CARREGAR IMAGEM
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.file-upload-button {
+  background-color: #d8d8dc;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.file-upload {
+  display: none;
+}
+
+

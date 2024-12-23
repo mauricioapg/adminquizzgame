@@ -2,13 +2,14 @@ import { Injectable, afterNextRender } from '@angular/core';
 import { Question } from '../model/question';
 import { HttpClient } from '@angular/common/http';
 import { delay, first } from 'rxjs';
+import { BASE_URL } from '../config/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
 
-  private urlAPI = 'https://quizzgameapi-ji6nrrlm7q-uc.a.run.app/questions'
+  private urlAPI = `${BASE_URL}/questions`
 
   public headers = new Headers()
 

@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BASE_URL } from '../config/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private urlAPI = 'https://quizzgameapi-ji6nrrlm7q-uc.a.run.app/login'
+  private urlAPI = `${BASE_URL}/login`
 
   constructor(private httpClient: HttpClient) { }
 

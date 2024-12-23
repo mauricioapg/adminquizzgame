@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, afterNextRender } from '@angular/core';
 import { Category } from '../model/category';
 import { delay, first } from 'rxjs';
+import { BASE_URL } from '../config/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  private urlAPI = 'https://quizzgameapi-ji6nrrlm7q-uc.a.run.app/categories'
+  private urlAPI = `${BASE_URL}/categories`
 
   public headers = new Headers();
 
